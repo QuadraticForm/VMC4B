@@ -1,4 +1,6 @@
+from typing import Set
 import bpy
+from bpy.types import Context
 from ..core import state
 from ..core.config import Config
 
@@ -26,6 +28,10 @@ class ConnectButton(bpy.types.Operator):
                            int(context.scene.vmc4b_performer_port))
         bpy.ops.vmc4b.update()
         return {'FINISHED'}
+    
+    def execute(self, context):
+
+        return self.invoke(context, None)
 
 
 class DisconnectButton(bpy.types.Operator):
@@ -43,3 +49,7 @@ class DisconnectButton(bpy.types.Operator):
         state.server.stop()
         state.is_recording = False
         return {'FINISHED'}
+    
+    def execute(self, context):
+
+        return self.invoke(context, None)

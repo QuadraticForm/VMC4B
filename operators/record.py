@@ -14,6 +14,10 @@ class StartRecordingButton(bpy.types.Operator):
     def invoke(self, context, event):
         state.is_recording = True
         return {'FINISHED'}
+    
+    def execute(self, context):
+
+        return self.invoke(context, None)
 
 
 class StopRecordingButton(bpy.types.Operator):
@@ -27,3 +31,7 @@ class StopRecordingButton(bpy.types.Operator):
     def invoke(self, context, event):
         state.is_recording = False
         return {'FINISHED'}
+    
+    def execute(self, context):
+
+        return self.invoke(context, None)
